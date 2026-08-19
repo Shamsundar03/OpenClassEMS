@@ -1,0 +1,20 @@
+{
+  "name": "Optenix EMS Pro",
+  "short_name": "Optenix-EMS",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dowhvdkjh/image/upload/v1784705930/Screenshot_20260715_131553_Gallery_2_bssa0e.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://res.cloudinary.com/dowhvdkjh/image/upload/v1784705930/Screenshot_20260715_131553_Gallery_2_bssa0e.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
