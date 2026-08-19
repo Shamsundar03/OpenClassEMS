@@ -764,13 +764,23 @@
             color: #1e40af;
         }
 
-        /* Unread Chat Dot */
+        /* Unread Chat Dot (Inside Chat List) */
         .unread-dot {
             width: 10px;
             height: 10px;
             background-color: var(--danger);
             border-radius: 50%;
             display: inline-block;
+            margin-left: auto;
+            box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+        }
+
+        /* Unread Chat Dot (Main Sidebar Menu) */
+        .sidebar-chat-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--danger);
+            border-radius: 50%;
             margin-left: auto;
             box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
         }
@@ -2028,27 +2038,16 @@
                 if (change.type === "added") {
                     const n = change.doc.data();
                     const nTime = new Date(n.timestamp).getTime();
-                    if (nTime > appLoadTime && (n.targetId === 'all' || n.targetId === currentUser
-                        .employeeId || (userRole === 'admin' && n.targetId === 'admin'))) {
+                    if (nTime > appLoadTime && (n.targetId === 'all' || n.targetId === currentUser.employeeId || (userRole === 'admin' && n.targetId === 'admin'))) {
                         
                         if (n.type === 'chat') {
-                            sendNativeNotification('💬 New Chat Message', n.message);
-                            
-                            // 1. Show the In-App Pop-up Toast
-                            showToast(n.message, 'success');
-
-                            // 2. Add the Unread Dot to the Sidebar List
-                            if (n.chatId && n.chatId !== activeChat) {
-                                const chatItems = document.querySelectorAll('.chat-item');
-                                chatItems.forEach(item => {
-                                    if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(`'${n.chatId}'`)) {
-                                        if (!item.querySelector('.unread-dot')) {
-                                            const dot = document.createElement('div');
-                                            dot.className = 'unread-dot';
-                                            item.appendChild(dot);
-                                        }
-                                    }
-                                });
+                            // If the user is currently looking at this specific chat, silently delete the notification
+                            if (n.chatId === activeChat) {
+                                notificationsRef.doc(change.doc.id).delete();
+                            } else {
+                                // Otherwise, show the pop-up Toast and play notification
+                                sendNativeNotification('💬 New Chat Message', n.message);
+                                showToast(n.message, 'success');
                             }
                         } else {
                             sendNativeNotification('Optenix System Alert', n.message);
@@ -3587,6 +3586,9 @@
         document.getElementById('chatName').textContent = chatName;
         closeChatSidebar();
 
+        // NEW: Clear the unread dots for this chat!
+        clearChatNotifications(chatId);
+
         chatsRef.doc(chatId).onSnapshot(doc => {
             if (activeChat === chatId) {
                 const messages = doc.exists ? (doc.data().messages || []) : [];
@@ -3596,8 +3598,11 @@
                     const msgTime = new Date(lastMsg.timestamp).getTime();
                     if (msgTime > appLoadTime && lastMsg.sender !== currentUser.name) {
                         const chatDisplayName = chatName || 'Chat';
-                        addNotification(`💬 New message from ${lastMsg.sender} in ${chatDisplayName}`, currentUser.employeeId, 'chat');
-                        sendNativeNotification(`💬 New message from ${lastMsg.sender}`, lastMsg.text || 'Sent an attachment');
+                        // Add notification ONLY if we aren't currently inside the chat looking at it
+                        if (activeChat !== chatId) {
+                            addNotification(`💬 New message from ${lastMsg.sender} in ${chatDisplayName}`, currentUser.employeeId, 'chat', chatId);
+                            sendNativeNotification(`💬 New message from ${lastMsg.sender}`, lastMsg.text || 'Sent an attachment');
+                        }
                     }
                 }
             }
@@ -4045,26 +4050,84 @@
         if (!currentUser) return;
         const badge = document.getElementById('notificationCount');
         const snap = await notificationsRef.get();
-        let notifs = snap.docs.map(d => d.data());
+        let notifs = snap.docs.map(d => ({id: d.id, ...d.data()}));
 
         if (userRole === 'admin') notifs = notifs.filter(n => n.targetId === 'admin' || n.targetId === 'all');
         else notifs = notifs.filter(n => n.targetId === currentUser.employeeId || n.targetId === 'all');
 
         const count = notifs.length;
-        badge.style.display = count > 0 ? 'inline' : 'none';
-        badge.textContent = count > 99 ? '99+' : count;
+        if(badge) {
+            badge.style.display = count > 0 ? 'inline' : 'none';
+            badge.textContent = count > 99 ? '99+' : count;
+        }
 
-        // --- APP BADGING API ADDED HERE ---
+        // --- NEW: Sync Visual Dots for Unread Chats ---
+        const chatNotifs = notifs.filter(n => n.type === 'chat' && n.chatId);
+        const unreadChatIds = new Set(chatNotifs.map(n => n.chatId));
+
+        // 1. Put dot on Main Sidebar "Team Chat"
+        const teamChatLink = document.querySelector('.sidebar-menu a[onclick*="chat"]');
+        if (teamChatLink) {
+            let dot = teamChatLink.querySelector('.sidebar-chat-dot');
+            if (chatNotifs.length > 0) {
+                if (!dot) {
+                    dot = document.createElement('span');
+                    dot.className = 'sidebar-chat-dot';
+                    teamChatLink.appendChild(dot);
+                }
+            } else {
+                if (dot) dot.remove();
+            }
+        }
+
+        // 2. Put dot on Specific User in Chat List
+        const chatItems = document.querySelectorAll('.chat-item');
+        chatItems.forEach(item => {
+            const onclickStr = item.getAttribute('onclick') || '';
+            const match = onclickStr.match(/'([^']+)'/);
+            if (match) {
+                const itemId = match[1];
+                let dot = item.querySelector('.unread-dot');
+                if (unreadChatIds.has(itemId) && activeChat !== itemId) {
+                    if (!dot) {
+                        dot = document.createElement('div');
+                        dot.className = 'unread-dot';
+                        item.appendChild(dot);
+                    }
+                } else {
+                    if (dot) dot.remove();
+                }
+            }
+        });
+
+        // --- APP BADGING API ---
         if ('setAppBadge' in navigator) {
             try {
-                if (count > 0) {
-                    navigator.setAppBadge(count);
-                } else {
-                    navigator.clearAppBadge();
-                }
-            } catch (error) {
-                console.error("App Badge error:", error);
+                if (count > 0) navigator.setAppBadge(count);
+                else navigator.clearAppBadge();
+            } catch (error) { console.error("App Badge error:", error); }
+        }
+    }
+
+    async function clearChatNotifications(chatId) {
+        // Find all unread chat notifications for this specific chat
+        const snap = await notificationsRef.where('type', '==', 'chat').where('chatId', '==', chatId).get();
+        const batch = db.batch();
+        let deleted = false;
+        
+        snap.docs.forEach(doc => {
+            const data = doc.data();
+            // Verify it belongs to the current user before clearing
+            if (userRole === 'admin') {
+                if (data.targetId === 'admin' || data.targetId === 'all') { batch.delete(doc.ref); deleted = true; }
+            } else {
+                if (data.targetId === currentUser.employeeId || data.targetId === 'all') { batch.delete(doc.ref); deleted = true; }
             }
+        });
+        
+        if (deleted) {
+            await batch.commit();
+            updateNotificationCount(); // This instantly makes the dots disappear!
         }
     }
 
