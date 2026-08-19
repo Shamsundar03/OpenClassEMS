@@ -764,6 +764,17 @@
             color: #1e40af;
         }
 
+        /* Unread Chat Dot */
+        .unread-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--danger);
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: auto;
+            box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+        }
+
         /* Modals */
         .modal {
             display: none;
@@ -2019,8 +2030,26 @@
                     const nTime = new Date(n.timestamp).getTime();
                     if (nTime > appLoadTime && (n.targetId === 'all' || n.targetId === currentUser
                         .employeeId || (userRole === 'admin' && n.targetId === 'admin'))) {
+                        
                         if (n.type === 'chat') {
                             sendNativeNotification('💬 New Chat Message', n.message);
+                            
+                            // 1. Show the In-App Pop-up Toast
+                            showToast(n.message, 'success');
+
+                            // 2. Add the Unread Dot to the Sidebar List
+                            if (n.chatId && n.chatId !== activeChat) {
+                                const chatItems = document.querySelectorAll('.chat-item');
+                                chatItems.forEach(item => {
+                                    if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(`'${n.chatId}'`)) {
+                                        if (!item.querySelector('.unread-dot')) {
+                                            const dot = document.createElement('div');
+                                            dot.className = 'unread-dot';
+                                            item.appendChild(dot);
+                                        }
+                                    }
+                                });
+                            }
                         } else {
                             sendNativeNotification('Optenix System Alert', n.message);
                         }
@@ -3547,6 +3576,11 @@
             const onclick = item.getAttribute('onclick');
             if (onclick && onclick.includes(`'${chatId}'`)) {
                 item.classList.add('active');
+                
+                // Remove the unread dot when clicked
+                const dot = item.querySelector('.unread-dot');
+                if (dot) dot.remove();
+                
                 break;
             }
         }
@@ -3676,22 +3710,22 @@
             const senderId = currentUser.employeeId;
 
             if (chatId === 'org_global') {
-                await addNotification(`💬 ${senderName} (Global): ${messagePreview}`, 'all', 'chat');
+                await addNotification(`💬 ${senderName} (Global): ${messagePreview}`, 'all', 'chat', chatId);
             } else if (chatId.startsWith('team_')) {
                 const deptName = chatId.replace('team_', '');
                 const empSnap = await employeesRef.where('department', '==', deptName).get();
                 const empIds = empSnap.docs.map(d => d.data().id).filter(id => id !== senderId);
 
                 for (const empId of empIds) {
-                    await addNotification(`💬 ${senderName} in ${deptName} Team: ${messagePreview}`, empId, 'chat');
+                    await addNotification(`💬 ${senderName} in ${deptName} Team: ${messagePreview}`, empId, 'chat', chatId);
                 }
                 if (userRole !== 'admin') {
-                    await addNotification(`💬 ${senderName} in ${deptName} Team: ${messagePreview}`, 'admin', 'chat');
+                    await addNotification(`💬 ${senderName} in ${deptName} Team: ${messagePreview}`, 'admin', 'chat', chatId);
                 }
             } else if (chatId.startsWith('direct_admin_')) {
                 const targetEmpId = chatId.replace('direct_admin_', '');
                 const recipientId = (userRole === 'admin') ? targetEmpId : 'admin';
-                await addNotification(`💬 ${senderName}: ${messagePreview}`, recipientId, 'chat');
+                await addNotification(`💬 ${senderName}: ${messagePreview}`, recipientId, 'chat', chatId);
             } else if (chatId.startsWith('direct_emp_')) {
                 const parts = chatId.split('_');
                 const id1 = parts[2];
@@ -3699,10 +3733,10 @@
                 const recipientId = (id1 === senderId) ? id2 : id1;
 
                 if (recipientId && recipientId !== senderId) {
-                    await addNotification(`💬 ${senderName}: ${messagePreview}`, recipientId, 'chat');
+                    await addNotification(`💬 ${senderName}: ${messagePreview}`, recipientId, 'chat', chatId);
                 }
                 if (userRole !== 'admin') {
-                    await addNotification(`💬 ${senderName} → ${recipientId}: ${messagePreview}`, 'admin', 'chat');
+                    await addNotification(`💬 ${senderName} → ${recipientId}: ${messagePreview}`, 'admin', 'chat', chatId);
                 }
             }
         } catch (e) {
@@ -3995,12 +4029,14 @@
         });
     }
 
-    async function addNotification(msg, targetId = 'all', type = 'system') {
+    // Updated to accept chatId
+    async function addNotification(msg, targetId = 'all', type = 'system', chatId = null) {
         await notificationsRef.add({
             message: msg,
             targetId: targetId,
             timestamp: new Date().toISOString(),
-            type: type
+            type: type,
+            chatId: chatId // Saves the chat ID to the database
         });
         updateNotificationCount();
     }
