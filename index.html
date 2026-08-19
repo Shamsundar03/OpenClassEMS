@@ -18,7 +18,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <!-- ADDED FIREBASE MESSAGING -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
 
     <!-- Font Awesome -->
@@ -184,9 +183,7 @@
         }
 
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
         .loader-brand {
@@ -197,15 +194,8 @@
             margin-bottom: 8px;
         }
 
-        .loader-brand span {
-            color: var(--primary);
-        }
-
-        .loader-sub {
-            font-size: 13px;
-            color: var(--gray-500);
-            font-weight: 400;
-        }
+        .loader-brand span { color: var(--primary); }
+        .loader-sub { font-size: 13px; color: var(--gray-500); font-weight: 400; }
 
         .loader-progress-bar {
             width: 200px;
@@ -225,18 +215,10 @@
         }
 
         @keyframes progressFill {
-            0% {
-                width: 0%;
-            }
-            40% {
-                width: 40%;
-            }
-            70% {
-                width: 75%;
-            }
-            100% {
-                width: 100%;
-            }
+            0% { width: 0%; }
+            40% { width: 40%; }
+            70% { width: 75%; }
+            100% { width: 100%; }
         }
 
         /* ===== SKELETON LOADERS ===== */
@@ -249,12 +231,8 @@
         }
 
         @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
         .skeleton-text {
@@ -263,15 +241,9 @@
             border-radius: 4px;
         }
 
-        .skeleton-text.w-60 {
-            width: 60%;
-        }
-        .skeleton-text.w-40 {
-            width: 40%;
-        }
-        .skeleton-text.w-80 {
-            width: 80%;
-        }
+        .skeleton-text.w-60 { width: 60%; }
+        .skeleton-text.w-40 { width: 40%; }
+        .skeleton-text.w-80 { width: 80%; }
 
         .skeleton-card {
             padding: 20px;
@@ -318,14 +290,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .login-header {
@@ -409,31 +375,13 @@
             box-shadow: 0 4px 6px -4px rgba(99, 102, 241, 0.3);
         }
 
-        .dark-mode .form-input::placeholder {
-            color: #888;
-        }
+        .dark-mode .form-input::placeholder { color: #888; }
+        .dark-mode .form-group label { color: #b0b0b0; }
+        .dark-mode .login-card { background: #1e1e1e; border-color: #333; }
+        .dark-mode .login-header p { color: #999; }
+        .dark-mode .text-muted { color: #888; }
 
-        .dark-mode .form-group label {
-            color: #b0b0b0;
-        }
-
-        .dark-mode .login-card {
-            background: #1e1e1e;
-            border-color: #333;
-        }
-
-        .dark-mode .login-header p {
-            color: #999;
-        }
-
-        .dark-mode .text-muted {
-            color: #888;
-        }
-
-        textarea.form-input {
-            resize: vertical;
-            min-height: 80px;
-        }
+        textarea.form-input { resize: vertical; min-height: 80px; }
 
         .btn {
             padding: 10px 20px;
@@ -452,70 +400,18 @@
             text-transform: uppercase;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--elevation-1);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            box-shadow: var(--elevation-2);
-            transform: translateY(-1px);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: rgba(99, 102, 241, 0.08);
-        }
-
-        .btn-sm {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        .btn-xs {
-            padding: 4px 8px;
-            font-size: 11px;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-            box-shadow: var(--elevation-1);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-            box-shadow: var(--elevation-1);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--gray-600);
-            position: relative;
-        }
-
-        .btn-ghost:hover {
-            background: var(--gray-100);
-        }
-
-        .btn-block {
-            width: 100%;
-            padding: 12px;
-        }
+        .btn-primary { background: var(--primary); color: white; box-shadow: var(--elevation-1); }
+        .btn-primary:hover { background: var(--primary-dark); box-shadow: var(--elevation-2); transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: rgba(99, 102, 241, 0.08); }
+        .btn-sm { padding: 6px 12px; font-size: 12px; }
+        .btn-xs { padding: 4px 8px; font-size: 11px; }
+        .btn-danger { background: var(--danger); color: white; box-shadow: var(--elevation-1); }
+        .btn-success { background: var(--success); color: white; box-shadow: var(--elevation-1); }
+        .btn-ghost { background: transparent; color: var(--gray-600); position: relative; }
+        .btn-ghost:hover { background: var(--gray-100); }
+        .btn-block { width: 100%; padding: 12px; }
 
         /* Dashboard Layout */
         .dashboard-container {
@@ -544,10 +440,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .sidebar-header img {
-            max-width: 140px;
-            height: auto;
-        }
+        .sidebar-header img { max-width: 140px; height: auto; }
 
         .sidebar-menu {
             list-style: none;
@@ -555,9 +448,7 @@
             flex: 1;
         }
 
-        .sidebar-menu li {
-            margin-bottom: 4px;
-        }
+        .sidebar-menu li { margin-bottom: 4px; }
 
         .sidebar-menu a {
             color: var(--gray-700);
@@ -573,24 +464,10 @@
             font-weight: 500;
         }
 
-        .sidebar-menu a:hover {
-            background: var(--gray-100);
-        }
-
-        .sidebar-menu a.active {
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--primary-dark);
-        }
-
-        .sidebar-menu a.active i {
-            color: var(--primary);
-        }
-
-        .sidebar-menu a i {
-            width: 20px;
-            font-size: 18px;
-            color: var(--gray-500);
-        }
+        .sidebar-menu a:hover { background: var(--gray-100); }
+        .sidebar-menu a.active { background: rgba(99, 102, 241, 0.12); color: var(--primary-dark); }
+        .sidebar-menu a.active i { color: var(--primary); }
+        .sidebar-menu a i { width: 20px; font-size: 18px; color: var(--gray-500); }
 
         .sidebar-footer {
             padding: 16px;
@@ -744,25 +621,10 @@
             letter-spacing: 0.5px;
         }
 
-        .badge-success {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-warning {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge-danger {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .badge-info {
-            background: #dbeafe;
-            color: #1e40af;
-        }
+        .badge-success { background: #d1fae5; color: #065f46; }
+        .badge-warning { background: #fef3c7; color: #92400e; }
+        .badge-danger { background: #fee2e2; color: #991b1b; }
+        .badge-info { background: #dbeafe; color: #1e40af; }
 
         /* Unread Chat Dot (Inside Chat List) */
         .unread-dot {
@@ -801,9 +663,7 @@
             padding: 16px;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
 
         .modal-content {
             background: var(--white);
@@ -819,9 +679,7 @@
         }
 
         /* Custom Confirm Modal */
-        #confirmModal {
-            z-index: 3000;
-        }
+        #confirmModal { z-index: 3000; }
 
         #confirmModal .modal-content {
             max-width: 360px;
@@ -877,9 +735,7 @@
         }
 
         .chat-item:hover,
-        .chat-item.active {
-            background: var(--gray-50);
-        }
+        .chat-item.active { background: var(--gray-50); }
 
         .chat-avatar {
             width: 40px;
@@ -925,9 +781,7 @@
             border-radius: 4px;
         }
 
-        .chat-mobile-toggle:hover {
-            background: var(--gray-100);
-        }
+        .chat-mobile-toggle:hover { background: var(--gray-100); }
 
         .chat-messages {
             flex: 1;
@@ -952,14 +806,8 @@
         }
 
         @keyframes messageIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message.sent {
@@ -1002,17 +850,10 @@
             font-size: 12px;
         }
 
-        .msg-delete-btn:hover {
-            background: var(--danger);
-            color: white;
-        }
+        .msg-delete-btn:hover { background: var(--danger); color: white; }
 
-        .message.sent .msg-delete-btn {
-            left: -38px;
-        }
-        .message.received .msg-delete-btn {
-            right: -38px;
-        }
+        .message.sent .msg-delete-btn { left: -38px; }
+        .message.received .msg-delete-btn { right: -38px; }
 
         .chat-file-link {
             display: inline-flex;
@@ -1103,28 +944,11 @@
             transition: var(--transition);
         }
 
-        .chat-attach-btn i {
-            font-size: 18px;
-            color: var(--gray-500);
-        }
-
-        .chat-attach-btn:hover i {
-            color: var(--primary);
-        }
-
-        .chat-send-btn {
-            background: var(--primary);
-            color: white;
-        }
-
-        .chat-send-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
-
-        .chat-send-btn i {
-            font-size: 16px;
-        }
+        .chat-attach-btn i { font-size: 18px; color: var(--gray-500); }
+        .chat-attach-btn:hover i { color: var(--primary); }
+        .chat-send-btn { background: var(--primary); color: white; }
+        .chat-send-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
+        .chat-send-btn i { font-size: 16px; }
 
         .chat-overlay {
             display: none;
@@ -1139,14 +963,9 @@
             transition: opacity 0.3s ease;
         }
 
-        .chat-overlay.active {
-            display: block;
-            opacity: 1;
-        }
+        .chat-overlay.active { display: block; opacity: 1; }
 
-        .notification-list-container {
-            overflow: hidden;
-        }
+        .notification-list-container { overflow: hidden; }
 
         .notification-item {
             padding: 16px;
@@ -1187,35 +1006,12 @@
             transition: var(--transition);
         }
 
-        .notif-delete-btn:hover {
-            color: var(--danger);
-        }
+        .notif-delete-btn:hover { color: var(--danger); }
 
-        .circular-progress {
-            width: 36px;
-            height: 36px;
-            flex-shrink: 0;
-        }
-
-        .circular-progress svg {
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-        }
-
-        .circular-progress .circle-bg {
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.2);
-            stroke-width: 3;
-        }
-
-        .circular-progress .circle {
-            fill: none;
-            stroke: #fff;
-            stroke-width: 3;
-            stroke-linecap: round;
-            transition: stroke-dasharray 0.3s ease;
-        }
+        .circular-progress { width: 36px; height: 36px; flex-shrink: 0; }
+        .circular-progress svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .circular-progress .circle-bg { fill: none; stroke: rgba(255, 255, 255, 0.2); stroke-width: 3; }
+        .circular-progress .circle { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray 0.3s ease; }
 
         .notification-toast {
             position: fixed;
@@ -1233,39 +1029,16 @@
         }
 
         @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-2 {
-            margin-bottom: 8px;
-        }
-
-        .mt-4 {
-            margin-top: 16px;
-        }
-
-        .text-muted {
-            color: var(--gray-500);
-        }
-
-        .text-primary {
-            color: var(--primary);
-        }
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 8px; }
+        .mt-4 { margin-top: 16px; }
+        .text-muted { color: var(--gray-500); }
+        .text-primary { color: var(--primary); }
 
         .mobile-menu-btn {
             display: none;
@@ -1283,31 +1056,13 @@
             word-break: break-all;
         }
 
-        .message.sent a.chat-link {
-            color: #ffffff;
-            text-decoration-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .message.received a.chat-link {
-            color: var(--primary);
-            text-decoration-color: var(--primary-light);
-        }
-
-        .message a.chat-link:hover {
-            opacity: 0.8;
-        }
-
-        .message .msg-text {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+        .message.sent a.chat-link { color: #ffffff; text-decoration-color: rgba(255, 255, 255, 0.6); }
+        .message.received a.chat-link { color: var(--primary); text-decoration-color: var(--primary-light); }
+        .message a.chat-link:hover { opacity: 0.8; }
+        .message .msg-text { white-space: pre-wrap; word-wrap: break-word; }
 
         /* ===== LOADING ANIMATION FOR DASHBOARD ===== */
-        .loading-dots {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
+        .loading-dots { display: inline-flex; align-items: center; gap: 4px; }
         .loading-dots span {
             width: 6px;
             height: 6px;
@@ -1315,34 +1070,16 @@
             background: var(--primary);
             animation: dotBounce 1.4s ease-in-out infinite both;
         }
-        .loading-dots span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-        .loading-dots span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-        .loading-dots span:nth-child(3) {
-            animation-delay: 0s;
-        }
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0s; }
 
         @keyframes dotBounce {
-            0%,
-            80%,
-            100% {
-                transform: scale(0.6);
-                opacity: 0.4;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
         }
 
-        .skeleton-loader-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        .skeleton-loader-wrapper { display: flex; flex-direction: column; gap: 16px; }
 
         /* ===== RECENT ACTIVITY CLICKABLE ===== */
         .activity-item {
@@ -1355,49 +1092,18 @@
             padding-right: 8px;
         }
 
-        .activity-item:hover {
-            background: var(--gray-100);
-            transform: translateX(4px);
-        }
-
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-
-        .activity-item strong {
-            color: var(--primary);
-        }
-
-        .activity-item .activity-date {
-            font-size: 12px;
-            color: var(--gray-500);
-        }
-
-        .dark-mode .activity-item:hover {
-            background: var(--gray-800);
-        }
+        .activity-item:hover { background: var(--gray-100); transform: translateX(4px); }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-item strong { color: var(--primary); }
+        .activity-item .activity-date { font-size: 12px; color: var(--gray-500); }
+        .dark-mode .activity-item:hover { background: var(--gray-800); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .sidebar {
-                width: 0;
-                padding: 0;
-                overflow: hidden;
-                transform: translateX(-100%);
-            }
-            .sidebar.open {
-                width: 280px;
-                padding: 0;
-                overflow-y: auto;
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-                padding: 16px;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
+            .sidebar { width: 0; padding: 0; overflow: hidden; transform: translateX(-100%); }
+            .sidebar.open { width: 280px; padding: 0; overflow-y: auto; transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 16px; }
+            .mobile-menu-btn { display: block; }
         }
 
         @media (max-width: 820px) {
@@ -1413,220 +1119,66 @@
                 z-index: 20;
                 border-radius: 0;
             }
-            .chat-sidebar.open {
-                transform: translateX(0);
-            }
-            .chat-mobile-toggle {
-                display: block;
-            }
-            .chat-container {
-                border-radius: var(--radius-sm);
-                height: calc(100vh - 140px);
-                min-height: 350px;
-            }
-            .chat-messages {
-                padding: 12px;
-            }
-            .message {
-                max-width: 92%;
-                font-size: 13px;
-                padding: 8px 12px;
-            }
-            .chat-header {
-                padding: 10px 12px;
-                min-height: 52px;
-            }
-            .chat-header h3 {
-                font-size: 14px;
-            }
-            .chat-input {
-                padding: 8px 10px;
-                gap: 6px;
-            }
-            .chat-message-input {
-                font-size: 14px;
-                padding: 8px 12px;
-                min-height: 36px;
-                border-radius: 18px;
-            }
-            .chat-attach-btn,
-            .chat-send-btn {
-                width: 38px;
-                height: 38px;
-            }
-            .chat-attach-btn i {
-                font-size: 16px;
-            }
-            .chat-send-btn i {
-                font-size: 14px;
-            }
-            .msg-delete-btn {
-                width: 26px;
-                height: 26px;
-                font-size: 10px;
-            }
-            .message.sent .msg-delete-btn {
-                left: -32px;
-            }
-            .message.received .msg-delete-btn {
-                right: -32px;
-            }
+            .chat-sidebar.open { transform: translateX(0); }
+            .chat-mobile-toggle { display: block; }
+            .chat-container { border-radius: var(--radius-sm); height: calc(100vh - 140px); min-height: 350px; }
+            .chat-messages { padding: 12px; }
+            .message { max-width: 92%; font-size: 13px; padding: 8px 12px; }
+            .chat-header { padding: 10px 12px; min-height: 52px; }
+            .chat-header h3 { font-size: 14px; }
+            .chat-input { padding: 8px 10px; gap: 6px; }
+            .chat-message-input { font-size: 14px; padding: 8px 12px; min-height: 36px; border-radius: 18px; }
+            .chat-attach-btn, .chat-send-btn { width: 38px; height: 38px; }
+            .chat-attach-btn i { font-size: 16px; }
+            .chat-send-btn i { font-size: 14px; }
+            .msg-delete-btn { width: 26px; height: 26px; font-size: 10px; }
+            .message.sent .msg-delete-btn { left: -32px; }
+            .message.received .msg-delete-btn { right: -32px; }
         }
 
         @media (max-width: 640px) {
-            .main-content {
-                padding: 10px;
-            }
-            .top-bar {
-                padding: 10px 14px;
-                border-radius: var(--radius-sm);
-                margin-bottom: 14px;
-            }
-            .top-bar h2 {
-                font-size: 17px;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-            .stat-card {
-                padding: 14px;
-            }
-            .stat-value {
-                font-size: 22px;
-            }
-            .stat-label {
-                font-size: 10px;
-            }
-            .stat-sub {
-                font-size: 10px;
-            }
-            .responsive-grid {
-                grid-template-columns: 1fr;
-            }
-            .card,
-            .modal-content {
-                padding: 14px;
-            }
-            .btn {
-                font-size: 12px;
-                padding: 8px 14px;
-            }
-            .btn-xs {
-                font-size: 10px;
-                padding: 3px 6px;
-            }
-            .chat-container {
-                height: calc(100vh - 120px);
-                min-height: 300px;
-                border-radius: var(--radius-sm);
-            }
-            .chat-sidebar {
-                width: 260px;
-            }
-            .chat-item {
-                padding: 12px 14px;
-                gap: 12px;
-                font-size: 13px;
-            }
-            .chat-avatar {
-                width: 34px;
-                height: 34px;
-                font-size: 14px;
-            }
-            .chat-messages {
-                padding: 10px;
-                gap: 8px;
-            }
-            .message {
-                max-width: 94%;
-                font-size: 13px;
-                padding: 8px 12px;
-                border-radius: 10px;
-            }
-            .chat-input {
-                padding: 6px 8px;
-                gap: 4px;
-            }
-            .chat-message-input {
-                font-size: 13px;
-                padding: 7px 10px;
-                min-height: 34px;
-                border-radius: 16px;
-            }
-            .chat-attach-btn,
-            .chat-send-btn {
-                width: 34px;
-                height: 34px;
-            }
-            .chat-attach-btn i {
-                font-size: 14px;
-            }
-            .chat-send-btn i {
-                font-size: 13px;
-            }
-            .msg-delete-btn {
-                width: 24px;
-                height: 24px;
-                font-size: 9px;
-            }
-            .message.sent .msg-delete-btn {
-                left: -28px;
-            }
-            .message.received .msg-delete-btn {
-                right: -28px;
-            }
-            .chat-image-preview {
-                max-height: 160px;
-            }
-            .chat-file-link {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-            .login-card {
-                padding: 28px 20px;
-            }
-            .login-header img {
-                max-width: 140px;
-            }
-            .excel-upload-section .file-preview {
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: 8px;
-            }
-            .excel-upload-section .file-preview .file-actions {
-                width: 100%;
-                justify-content: flex-start;
-            }
+            .main-content { padding: 10px; }
+            .top-bar { padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 14px; }
+            .top-bar h2 { font-size: 17px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-card { padding: 14px; }
+            .stat-value { font-size: 22px; }
+            .stat-label { font-size: 10px; }
+            .stat-sub { font-size: 10px; }
+            .responsive-grid { grid-template-columns: 1fr; }
+            .card, .modal-content { padding: 14px; }
+            .btn { font-size: 12px; padding: 8px 14px; }
+            .btn-xs { font-size: 10px; padding: 3px 6px; }
+            .chat-container { height: calc(100vh - 120px); min-height: 300px; border-radius: var(--radius-sm); }
+            .chat-sidebar { width: 260px; }
+            .chat-item { padding: 12px 14px; gap: 12px; font-size: 13px; }
+            .chat-avatar { width: 34px; height: 34px; font-size: 14px; }
+            .chat-messages { padding: 10px; gap: 8px; }
+            .message { max-width: 94%; font-size: 13px; padding: 8px 12px; border-radius: 10px; }
+            .chat-input { padding: 6px 8px; gap: 4px; }
+            .chat-message-input { font-size: 13px; padding: 7px 10px; min-height: 34px; border-radius: 16px; }
+            .chat-attach-btn, .chat-send-btn { width: 34px; height: 34px; }
+            .chat-attach-btn i { font-size: 14px; }
+            .chat-send-btn i { font-size: 13px; }
+            .msg-delete-btn { width: 24px; height: 24px; font-size: 9px; }
+            .message.sent .msg-delete-btn { left: -28px; }
+            .message.received .msg-delete-btn { right: -28px; }
+            .chat-image-preview { max-height: 160px; }
+            .chat-file-link { font-size: 12px; padding: 6px 10px; }
+            .login-card { padding: 28px 20px; }
+            .login-header img { max-width: 140px; }
+            .excel-upload-section .file-preview { flex-direction: column; align-items: flex-start !important; gap: 8px; }
+            .excel-upload-section .file-preview .file-actions { width: 100%; justify-content: flex-start; }
         }
 
         @media (max-width: 400px) {
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .stat-card {
-                padding: 10px;
-            }
-            .stat-value {
-                font-size: 18px;
-            }
-            .chat-container {
-                height: calc(100vh - 110px);
-            }
-            .chat-messages {
-                padding: 8px;
-            }
-            .message {
-                font-size: 12px;
-                padding: 6px 10px;
-                max-width: 96%;
-            }
-            .chat-message-input {
-                font-size: 12px;
-                padding: 6px 10px;
-                min-height: 30px;
-            }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .stat-card { padding: 10px; }
+            .stat-value { font-size: 18px; }
+            .chat-container { height: calc(100vh - 110px); }
+            .chat-messages { padding: 8px; }
+            .message { font-size: 12px; padding: 6px 10px; max-width: 96%; }
+            .chat-message-input { font-size: 12px; padding: 6px 10px; min-height: 30px; }
         }
 
         /* ===== EXCEL UPLOAD SECTION ===== */
@@ -1652,16 +1204,8 @@
             cursor: pointer;
         }
 
-        .excel-upload-section .upload-area i {
-            font-size: 40px;
-            color: var(--primary);
-        }
-
-        .excel-upload-section .upload-area p {
-            font-size: 14px;
-            color: var(--gray-500);
-            text-align: center;
-        }
+        .excel-upload-section .upload-area i { font-size: 40px; color: var(--primary); }
+        .excel-upload-section .upload-area p { font-size: 14px; color: var(--gray-500); text-align: center; }
 
         .excel-upload-section .file-preview {
             display: flex;
@@ -1674,19 +1218,8 @@
             margin-top: 12px;
         }
 
-        .excel-upload-section .file-preview .file-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .excel-upload-section .file-preview .file-info i {
-            font-size: 28px;
-            color: var(--success);
-        }
-
+        .excel-upload-section .file-preview .file-info { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+        .excel-upload-section .file-preview .file-info i { font-size: 28px; color: var(--success); }
         .excel-upload-section .file-preview .file-info .file-name {
             font-weight: 500;
             font-size: 14px;
@@ -1695,30 +1228,16 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .excel-upload-section .file-preview .file-info .file-size { font-size: 12px; color: var(--gray-400); }
+        .excel-upload-section .file-preview .file-actions { display: flex; gap: 8px; flex-shrink: 0; }
 
-        .excel-upload-section .file-preview .file-info .file-size {
-            font-size: 12px;
-            color: var(--gray-400);
-        }
-
-        .excel-upload-section .file-preview .file-actions {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        .excel-upload-section .upload-progress {
-            margin-top: 12px;
-            display: none;
-        }
-
+        .excel-upload-section .upload-progress { margin-top: 12px; display: none; }
         .excel-upload-section .upload-progress .progress-bar {
             height: 6px;
             background: var(--gray-200);
             border-radius: 4px;
             overflow: hidden;
         }
-
         .excel-upload-section .upload-progress .progress-bar .fill {
             height: 100%;
             width: 0%;
@@ -1726,7 +1245,6 @@
             border-radius: 4px;
             transition: width 0.3s ease;
         }
-
         .excel-upload-section .upload-progress .progress-text {
             font-size: 12px;
             color: var(--gray-500);
@@ -1734,15 +1252,8 @@
             text-align: center;
         }
 
-        .badge-excel {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .dark-mode .badge-excel {
-            background: #064e3b;
-            color: #a7f3d0;
-        }
+        .badge-excel { background: #d1fae5; color: #065f46; }
+        .dark-mode .badge-excel { background: #064e3b; color: #a7f3d0; }
     </style>
 </head>
 
@@ -1924,15 +1435,11 @@
             if (!messaging) return;
             const permission = await Notification.requestPermission();
             if (permission === 'granted') {
-                // Generate Token with your specific VAPID key
                 const token = await messaging.getToken({ vapidKey: 'BIobYqQQT4kcZ39OxWb6fArq-kdmI0vZRS7-WFVn3hmgzvldAl4sMKV51iGYCNU2x0EydHxcJIf3Uh4eEkuyv8A' });
                 
                 if (token && currentUser) {
                     console.log('FCM Device Token acquired');
-                    // Save this token to the user's profile in Firestore
-                    await employeesRef.doc(currentUser.employeeId).update({
-                        fcmToken: token
-                    });
+                    await employeesRef.doc(currentUser.employeeId).update({ fcmToken: token });
                 }
             }
         } catch (error) {
@@ -2020,12 +1527,20 @@
         }
     }
 
+    // ============================================================
+    //  LIVE LISTENERS (UPDATED TO FIX HARD REFRESH BUG)
+    // ============================================================
     function setupLiveListeners() {
+        let isFirstTaskLoad = true;
         tasksRef.onSnapshot(snapshot => {
+            if (isFirstTaskLoad) {
+                isFirstTaskLoad = false;
+                return; // Skip old tasks on first load
+            }
             snapshot.docChanges().forEach(change => {
                 if (change.type === "added") {
                     const t = change.doc.data();
-                    if (t.assignedTo === currentUser.employeeId && parseInt(t.id) > appLoadTime) {
+                    if (t.assignedTo === currentUser.employeeId) {
                         sendNativeNotification('New Task Assigned', t.title);
                         addNotification(`You were assigned a new task: ${t.title}`, currentUser.employeeId);
                     }
@@ -2033,24 +1548,30 @@
             });
         });
 
+        let isFirstNotifLoad = true;
         notificationsRef.onSnapshot(snapshot => {
+            if (isFirstNotifLoad) {
+                isFirstNotifLoad = false;
+                updateNotificationCount(); // Count them for the red dots on first load
+                return; // Skip old toast pop-ups on first load
+            }
+            
             snapshot.docChanges().forEach(change => {
                 if (change.type === "added") {
                     const n = change.doc.data();
-                    const nTime = new Date(n.timestamp).getTime();
-                    if (nTime > appLoadTime && (n.targetId === 'all' || n.targetId === currentUser.employeeId || (userRole === 'admin' && n.targetId === 'admin'))) {
-                        
+                    if (n.targetId === 'all' || n.targetId === currentUser.employeeId || (userRole === 'admin' && n.targetId === 'admin')) {
                         if (n.type === 'chat') {
-                            // If the user is currently looking at this specific chat, silently delete the notification
                             if (n.chatId === activeChat) {
+                                // If the user is actively reading this chat, delete the notification silently
                                 notificationsRef.doc(change.doc.id).delete();
                             } else {
-                                // Otherwise, show the pop-up Toast and play notification
+                                // Otherwise, show the pop-up toast!
                                 sendNativeNotification('💬 New Chat Message', n.message);
                                 showToast(n.message, 'success');
                             }
                         } else {
                             sendNativeNotification('Optenix System Alert', n.message);
+                            showToast(n.message, 'warning');
                         }
                     }
                 }
@@ -2074,8 +1595,7 @@
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') { document.getElementById('installPwaBtn')
-                    .classList.add('hidden'); }
+                if (choiceResult.outcome === 'accepted') { document.getElementById('installPwaBtn').classList.add('hidden'); }
                 deferredPrompt = null;
             });
         }
@@ -2259,7 +1779,7 @@
         document.getElementById('dashboardScreen').classList.remove('hidden');
 
         appLoadTime = Date.now();
-        setupPushNotifications(); // Now runs dynamically to fetch FCM Token
+        setupPushNotifications(); 
         setupLiveListeners();
         initializeDashboard();
         startIpMonitor();
@@ -3564,6 +3084,9 @@
             this.style.height = Math.min(this.scrollHeight, 100) + 'px';
         });
 
+        // Ensure dots are drawn on freshly rendered chat list
+        updateNotificationCount();
+
         if (userRole === 'admin') openChat('org_global', 'Organization Chat');
     }
 
@@ -3576,7 +3099,7 @@
             if (onclick && onclick.includes(`'${chatId}'`)) {
                 item.classList.add('active');
                 
-                // Remove the unread dot when clicked
+                // Remove the unread dot instantly from the UI when clicked
                 const dot = item.querySelector('.unread-dot');
                 if (dot) dot.remove();
                 
@@ -3586,25 +3109,16 @@
         document.getElementById('chatName').textContent = chatName;
         closeChatSidebar();
 
-        // NEW: Clear the unread dots for this chat!
+        // Clear notifications from the database for this specific chat
         clearChatNotifications(chatId);
 
         chatsRef.doc(chatId).onSnapshot(doc => {
             if (activeChat === chatId) {
                 const messages = doc.exists ? (doc.data().messages || []) : [];
                 renderMessageList(messages);
-                if (messages.length > 0) {
-                    const lastMsg = messages[messages.length - 1];
-                    const msgTime = new Date(lastMsg.timestamp).getTime();
-                    if (msgTime > appLoadTime && lastMsg.sender !== currentUser.name) {
-                        const chatDisplayName = chatName || 'Chat';
-                        // Add notification ONLY if we aren't currently inside the chat looking at it
-                        if (activeChat !== chatId) {
-                            addNotification(`💬 New message from ${lastMsg.sender} in ${chatDisplayName}`, currentUser.employeeId, 'chat', chatId);
-                            sendNativeNotification(`💬 New message from ${lastMsg.sender}`, lastMsg.text || 'Sent an attachment');
-                        }
-                    }
-                }
+                
+                // If a new message arrives while you are looking at the chat, mark it as read immediately
+                clearChatNotifications(chatId);
             }
         });
     }
@@ -4034,14 +3548,13 @@
         });
     }
 
-    // Updated to accept chatId
     async function addNotification(msg, targetId = 'all', type = 'system', chatId = null) {
         await notificationsRef.add({
             message: msg,
             targetId: targetId,
             timestamp: new Date().toISOString(),
             type: type,
-            chatId: chatId // Saves the chat ID to the database
+            chatId: chatId 
         });
         updateNotificationCount();
     }
@@ -4061,11 +3574,9 @@
             badge.textContent = count > 99 ? '99+' : count;
         }
 
-        // --- NEW: Sync Visual Dots for Unread Chats ---
         const chatNotifs = notifs.filter(n => n.type === 'chat' && n.chatId);
         const unreadChatIds = new Set(chatNotifs.map(n => n.chatId));
 
-        // 1. Put dot on Main Sidebar "Team Chat"
         const teamChatLink = document.querySelector('.sidebar-menu a[onclick*="chat"]');
         if (teamChatLink) {
             let dot = teamChatLink.querySelector('.sidebar-chat-dot');
@@ -4080,7 +3591,6 @@
             }
         }
 
-        // 2. Put dot on Specific User in Chat List
         const chatItems = document.querySelectorAll('.chat-item');
         chatItems.forEach(item => {
             const onclickStr = item.getAttribute('onclick') || '';
@@ -4100,7 +3610,6 @@
             }
         });
 
-        // --- APP BADGING API ---
         if ('setAppBadge' in navigator) {
             try {
                 if (count > 0) navigator.setAppBadge(count);
@@ -4110,14 +3619,12 @@
     }
 
     async function clearChatNotifications(chatId) {
-        // Find all unread chat notifications for this specific chat
         const snap = await notificationsRef.where('type', '==', 'chat').where('chatId', '==', chatId).get();
         const batch = db.batch();
         let deleted = false;
         
         snap.docs.forEach(doc => {
             const data = doc.data();
-            // Verify it belongs to the current user before clearing
             if (userRole === 'admin') {
                 if (data.targetId === 'admin' || data.targetId === 'all') { batch.delete(doc.ref); deleted = true; }
             } else {
@@ -4127,7 +3634,7 @@
         
         if (deleted) {
             await batch.commit();
-            updateNotificationCount(); // This instantly makes the dots disappear!
+            updateNotificationCount(); 
         }
     }
 
@@ -4176,7 +3683,7 @@
                         document.getElementById('dashboardScreen').classList.remove('hidden');
 
                         appLoadTime = Date.now();
-                        setupPushNotifications(); // Requesting FCM Token
+                        setupPushNotifications(); 
                         setupLiveListeners();
                         initializeDashboard();
                         startIpMonitor();
@@ -4197,7 +3704,6 @@
         }
     })();
 
-    // Updated SW Registration to point to the new Messaging SW name
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./firebase-messaging-sw.js').catch(err =>
             console.error('Service Worker Registration Error:', err)));
