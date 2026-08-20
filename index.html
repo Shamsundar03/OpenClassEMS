@@ -1379,22 +1379,13 @@
 <!-- ===== CHAT OVERLAY (mobile) ===== -->
 <div id="chatOverlay" class="chat-overlay" onclick="closeChatSidebar()"></div>
 
+<!-- LINK YOUR EXTERNAL CONFIG.JS HERE -->
+<script src="config.js"></script>
+
 <script>
     // ============================================================
-    //  FIREBASE & CLOUDINARY CONFIG
+    //  FIREBASE SERVICES INITIALIZATION (Config is in config.js)
     // ============================================================
-    const firebaseConfig = {
-        apiKey: "AIzaSyAyMt0FPBsStGwlmXb-NTD5GgUf0njNPco",
-        authDomain: "optenixems-c6609.firebaseapp.com",
-        projectId: "optenixems-c6609",
-        storageBucket: "optenixems-c6609.firebasestorage.app",
-        messagingSenderId: "1090894316770",
-        appId: "1:1090894316770:web:6cf555ba335528b2bc0abb",
-        measurementId: "G-5JC6BYN2MB"
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     const auth = firebase.auth();
     let messaging = null;
@@ -1560,9 +1551,10 @@
                 if (change.type === "added") {
                     const n = change.doc.data();
                     if (n.targetId === 'all' || n.targetId === currentUser.employeeId || (userRole === 'admin' && n.targetId === 'admin')) {
+                        
                         if (n.type === 'chat') {
+                            // If the user is currently looking at this specific chat, silently delete the notification
                             if (n.chatId === activeChat) {
-                                // If the user is actively reading this chat, delete the notification silently
                                 notificationsRef.doc(change.doc.id).delete();
                             } else {
                                 // Otherwise, show the pop-up toast!
